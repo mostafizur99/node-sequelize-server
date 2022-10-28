@@ -23,10 +23,12 @@ async function createProduct(req, res) {
     }
 }
 
-async function getProduct(req, res) {
+async function findProducts(req, res) {
     try {
+        const products = await ProductModel.findAll()
         return res.status(200).send({
-            message: 'Product Fetched'
+            message: 'All Products Fetched',
+            data: products
         })
     } catch {
         return res.status(500).send({
@@ -35,4 +37,4 @@ async function getProduct(req, res) {
     }
 }
 
-module.exports = { getProduct, createProduct }
+module.exports = { findProducts, createProduct }

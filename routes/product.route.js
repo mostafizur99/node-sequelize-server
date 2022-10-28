@@ -1,11 +1,12 @@
-const { createProduct, getProduct } = require('../controller/product.controller')
+const { createProduct, findProducts } = require('../controller/product.controller')
 
 const productRoute = (app) => {
 
     // create a product route
     app.post('/api/products', createProduct)
 
-    app.get('/api/products', getProduct)
+    //find all oroducts route
+    app.get('/api/products', findProducts)
 }
 
 module.exports = productRoute
