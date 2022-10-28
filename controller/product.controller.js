@@ -23,6 +23,7 @@ async function createProduct(req, res) {
     }
 }
 
+// find all products controller
 async function findProducts(req, res) {
     try {
         const products = await ProductModel.findAll()
@@ -30,11 +31,29 @@ async function findProducts(req, res) {
             message: 'All Products Fetched',
             data: products
         })
-    } catch {
+    } catch (e) {
         return res.status(500).send({
-            message: 'Server Error'
+            message: 'Server Error',
+            error: e.message
         })
     }
 }
 
-module.exports = { findProducts, createProduct }
+// find product by id controller
+async function findProductById(req, res) {
+    try {
+        const ID = req.params.id
+        const product = await ProductModel.findByPk(ID)
+        return res.status(200).send({
+            message: 'Product Fetched',
+            data: product
+        })
+    } catch (e) {
+        return res.status(500).send({
+            message: 'Server Error',
+            error: e.message
+        })
+    }
+}
+
+module.exports = { createProduct, findProducts, findProductById }
