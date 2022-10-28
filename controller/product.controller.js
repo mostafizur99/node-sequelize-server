@@ -56,4 +56,27 @@ async function findProductById(req, res) {
     }
 }
 
-module.exports = { createProduct, findProducts, findProductById }
+// update product by id controller
+async function updateProductById(req, res) {
+    try {
+        const ID = req.params.id
+        const updatedQuery = {
+            ...req.body.query
+        }
+        const product = await ProductModel.update(updatedQuery, {
+            where: {
+                id: ID
+            }
+        })
+        return res.status(200).send({
+            message: 'Product Updated',
+        })
+    } catch (e) {
+        return res.status(500).send({
+            message: 'Server Error',
+            error: e.message
+        })
+    }
+}
+
+module.exports = { createProduct, findProducts, findProductById, updateProductById }

@@ -1,4 +1,4 @@
-const { createProduct, findProducts, findProductById } = require('../controller/product.controller')
+const { createProduct, findProducts, findProductById, updateProductById } = require('../controller/product.controller')
 
 const productRoute = (app) => {
 
@@ -10,6 +10,9 @@ const productRoute = (app) => {
 
     //find product by id route
     app.get('/api/products/:id', findProductById)
+
+    //update product by id route
+    app.put('/api/products/:id', updateProductById)
 }
 
 module.exports = productRoute
