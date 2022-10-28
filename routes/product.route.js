@@ -1,4 +1,4 @@
-const { createProduct, findProducts, findProductById, updateProductById } = require('../controller/product.controller')
+const { createProduct, findProducts, findProductById, updateProductById, deleteProductById } = require('../controller/product.controller')
 
 const productRoute = (app) => {
 
@@ -13,6 +13,9 @@ const productRoute = (app) => {
 
     //update product by id route
     app.put('/api/products/:id', updateProductById)
+
+    //delete product by id route
+    app.delete('/api/products/:id', deleteProductById)
 }
 
 module.exports = productRoute

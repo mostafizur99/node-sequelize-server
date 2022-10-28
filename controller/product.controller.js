@@ -79,4 +79,25 @@ async function updateProductById(req, res) {
     }
 }
 
-module.exports = { createProduct, findProducts, findProductById, updateProductById }
+// delete product by id controller
+async function deleteProductById(req, res) {
+    try {
+        const ID = req.params.id
+        await ProductModel.destroy({
+            where: {
+                id: ID
+            }
+        })
+        return res.status(200).send({
+            message: 'Product Deleted',
+        })
+    } catch (e) {
+        return res.status(500).send({
+            message: 'Server Error',
+            error: e.message
+        })
+    }
+}
+
+
+module.exports = { createProduct, findProducts, findProductById, updateProductById, deleteProductById }
