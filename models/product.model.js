@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../util/connectDb');
+const sequelize = require('../utils/connectDb');
 
-const Product = sequelize.define('product', {
+const ProductModel = sequelize.define('product', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -23,4 +23,4 @@ const Product = sequelize.define('product', {
     }
 })
 
-module.exports = Product;
+module.exports = ProductModel;

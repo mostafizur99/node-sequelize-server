@@ -6,6 +6,8 @@ const connectDb = require('./utils/connectDb')
 const app = express()
 const port = 5000
 
+app.use(express.json());
+
 connectDb.sync()
     .then(result => {
         // console.log(result);
